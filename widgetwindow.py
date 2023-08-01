@@ -10,12 +10,10 @@ class Extra(Toplevel):
         self.button.pack(expand=True)
 
     def show_widgets(self):
-        wf =  WidgetFactory()
+        wf = WidgetFactory()
         
-        widgets=wf.widgets
+        widgets = wf.widgets
         
         for w in widgets:
             self.button = Button(self, text=f"{w.name}")
             self.button.pack(expand=True)
-
-        
