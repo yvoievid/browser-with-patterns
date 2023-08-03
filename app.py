@@ -6,4 +6,6 @@ if __name__ == "__main__":
 
     window.title("Chomem")
     window.geometry("1280x720")
+    window.config(bg="white")  
+
     window.mainloop()

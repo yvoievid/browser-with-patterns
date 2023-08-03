@@ -4,6 +4,8 @@ from creational.builder import TabBuilder
 import widgetwindow
 import tabwindow
 import walletwindow
+import findwindow
+
 
 class MainWindow(Tk, Singleton):
     def init(self):
@@ -16,12 +18,18 @@ class MainWindow(Tk, Singleton):
 
         self.payment = Button(self, text="Payment", command=self.openPayments)
         self.payment.pack(expand=True)
-
         
+        self.find = Button(self, text="Find Cats", command=self.findWidget)
+        self.find.pack(expand=True)
+
+    def findWidget(self):
+        global findWindow
+        findWindow = findwindow.Extra()
+
     def createWindowWidgets(self):
         global extraWindow
+        print('hellp')
         extraWindow = widgetwindow.Extra()
-        
     
     def createTab(self):
         tab = TabBuilder().withLinks("www.google.com").withThumbnail("gooogle").withPhotos("googlePhoto").build()
@@ -29,7 +37,8 @@ class MainWindow(Tk, Singleton):
         
     def openPayments(self):
         global payments
-        payments = walletwindow.Extra()
+        payments = walletwindow.Extra() 
         
+    
     def __init__(self, screenName: str | None = None, baseName: str | None = None, className: str = "Tk", useTk: bool = True, sync: bool = False, use: str | None = None) -> None:
         pass
