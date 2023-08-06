@@ -11,4 +11,4 @@ class SearchBar():
         page = requests.get("http://www.google.com/search?q=" + query)
         # html_bytes = page.read()
         # html = html_bytes.decode("utf-8")
-        return page
+        return page.text

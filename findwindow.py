@@ -9,7 +9,7 @@ class Extra(Toplevel):
         self.title("Wallet")
         self.geometry("640x480")
         
-        self.findInput = Entry(self, background="white")
+        self.findInput = Entry(self)
         self.findInput.pack(expand=True)
         
         self.button = Button(self, text="find cats", command=self.find_something)
