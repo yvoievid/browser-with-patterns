@@ -1,6 +1,7 @@
 from tkinter import *
 from creational.singleton import Singleton
 from creational.builder import TabBuilder
+from structural.bridge import *
 import widgetwindow
 import tabwindow
 import walletwindow
@@ -11,16 +12,36 @@ class MainWindow(Tk, Singleton):
     def init(self):
         super().__init__()
         self.openWidgetsButton = Button(self, text="open widget window", command=self.createWindowWidgets)
-        self.openWidgetsButton.pack(expand=True)
+        self.openWidgetsButton.grid(row=0, column=0)
+        
         self.addTabButton = Button(self, text="create tab", command=self.createTab)
-        self.addTabButton.pack(expand=True)
+        self.addTabButton.grid(row=0, column=1)
 
         self.payment = Button(self, text="Payment", command=self.openPayments)
-        self.payment.pack(expand=True)
+        self.payment.grid(row=0, column=2)
         
         self.find = Button(self, text="Find Cats", command=self.findWidget)
-        self.find.pack(expand=True)
-
+        self.find.grid(row=0, column=3)
+        
+        self.yotubeWidget = Button(self, text="Facebook", command=self.openFacebook)
+        self.yotubeWidget.grid(row=1, column=3)
+        
+        self.facebookWidget = Button(self, text="Youtube", command=self.openYoutube)
+        self.facebookWidget.grid(row=1, column=4)
+        
+    
+    def openFacebook(self):
+        global facebookTab
+        facebookFunctionality = FacebookCall()
+        widget =  FacebookMainPageApp(facebookFunctionality)
+        facebookTab = tabwindow.Tab("facebook", widget)
+    
+    def openYoutube(self):
+        global youtube
+        youtubeFunctionality = YoutubeCall()
+        widget = YoutubeMainPageApp(youtubeFunctionality)
+        youtube = tabwindow.Tab("youtube", widget)
+        
     def findWidget(self):
         global findWindow
         findWindow = findwindow.Extra()

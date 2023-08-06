@@ -17,3 +17,5 @@ class Extra(Toplevel):
         for w in widgets:
             self.button = Button(self, text=f"{w.name}")
             self.button.pack(expand=True)
+            
+        
