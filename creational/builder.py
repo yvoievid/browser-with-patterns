@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from tabwindow import Tab
+from behaviour.iterator import *
 
 class TabBuilder(ABC):
     def __init__(self) -> None:

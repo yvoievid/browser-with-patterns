@@ -2,6 +2,7 @@ from tkinter import *
 from creational.singleton import Singleton
 from creational.builder import TabBuilder
 from structural.bridge import *
+from behaviour.iterator import *
 import widgetwindow
 import tabwindow
 import walletwindow
@@ -11,6 +12,7 @@ import findwindow
 class MainWindow(Tk, Singleton):
     def init(self):
         super().__init__()
+        self.tabs = TabsCollection()
         self.openWidgetsButton = Button(self, text="open widget window", command=self.createWindowWidgets)
         self.openWidgetsButton.grid(row=0, column=0)
         
@@ -29,7 +31,7 @@ class MainWindow(Tk, Singleton):
         self.facebookWidget = Button(self, text="Youtube", command=self.openYoutube)
         self.facebookWidget.grid(row=1, column=4)
         
-    
+        
     def openFacebook(self):
         global facebookTab
         facebookFunctionality = FacebookCall()
@@ -48,12 +50,11 @@ class MainWindow(Tk, Singleton):
 
     def createWindowWidgets(self):
         global extraWindow
-        print('hellp')
         extraWindow = widgetwindow.Extra()
     
     def createTab(self):
         tab = TabBuilder().withLinks("www.google.com").withThumbnail("gooogle").withPhotos("googlePhoto").build()
-        self.tabs.append(tab)
+        self.tabs.add_item(tab)
         
     def openPayments(self):
         global payments
