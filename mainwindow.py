@@ -7,6 +7,7 @@ import widgetwindow
 import tabwindow
 import walletwindow
 import findwindow
+import moodlewindow
 
 
 class MainWindow(Tk, Singleton):
@@ -31,6 +32,13 @@ class MainWindow(Tk, Singleton):
         self.facebookWidget = Button(self, text="Youtube", command=self.openYoutube)
         self.facebookWidget.grid(row=1, column=4)
         
+        self.moodleWindow = Button(self, text="Moodle", command=self.openMoodle)
+        self.moodleWindow.grid(row=1, column=5)
+        
+    
+    def openMoodle(self):
+        global moodle
+        moodle = moodlewindow.Extra()
         
     def openFacebook(self):
         global facebookTab
