@@ -3,6 +3,7 @@ from creational.singleton import Singleton
 from creational.builder import TabBuilder
 from structural.bridge import *
 from behaviour.iterator import *
+from behaviour.observer import *
 import widgetwindow
 import tabwindow
 import walletwindow
@@ -14,6 +15,7 @@ class MainWindow(Tk, Singleton):
     def init(self):
         super().__init__()
         self.tabs = TabsCollection()
+        self.themePublisher = TabPublisher(self.tabs)
         self.openWidgetsButton = Button(self, text="open widget window", command=self.createWindowWidgets)
         self.openWidgetsButton.grid(row=0, column=0)
         
@@ -42,10 +44,12 @@ class MainWindow(Tk, Singleton):
         self.whiteThemeButton.grid(row=2, column=2)
         
     def darkThere(self):
-        pass
+        self.themePublisher.notifySubscribers("black")
+        
     
     def whiteThere(self):
-        pass
+        self.themePublisher.notifySubscribers("white")
+
     
     def openMoodle(self):
         global moodle

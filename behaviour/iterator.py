@@ -1,8 +1,9 @@
 from collections.abc import Iterable, Iterator
 from typing import Any, Iterator, List
 from tkinter import *
+from behaviour.observer import Subscriber
 
-class Tab(Toplevel):
+class Tab(Toplevel, Subscriber):
     def __init__(self, title = "tab", widget = None) -> None:
         super().__init__()
         self.title(title)
@@ -16,12 +17,16 @@ class Tab(Toplevel):
     def call(self):
         print("I am tab")
 
-
+    def updateTheme(self, color) -> None:
+        self.configure(bg=color)
+        
+        
 class IterateTabs(Iterator):
     def __init__(self, collection, reverse = False) -> None:
         super().__init__()
         self._collection = collection
         self._reverse = reverse
+        self._position = 0
     
     def __next__(self) -> Tab:  
         try:
