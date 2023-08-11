@@ -35,6 +35,17 @@ class MainWindow(Tk, Singleton):
         self.moodleWindow = Button(self, text="Moodle", command=self.openMoodle)
         self.moodleWindow.grid(row=1, column=5)
         
+        self.darkThemeButton = Button(self, text="Dark Theme", command=self.darkThere)
+        self.darkThemeButton.grid(row=2, column=1)
+        
+        self.whiteThemeButton = Button(self, text="White Theme", command=self.whiteThere)
+        self.whiteThemeButton.grid(row=2, column=2)
+        
+    def darkThere(self):
+        pass
+    
+    def whiteThere(self):
+        pass
     
     def openMoodle(self):
         global moodle
