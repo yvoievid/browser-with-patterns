@@ -4,6 +4,7 @@ from creational.builder import TabBuilder
 from structural.bridge import *
 from behaviour.iterator import *
 from behaviour.observer import *
+from behaviour.command import *
 import widgetwindow
 import tabwindow
 import walletwindow
@@ -42,6 +43,10 @@ class MainWindow(Tk, Singleton):
         
         self.whiteThemeButton = Button(self, text="White Theme", command=self.whiteThere)
         self.whiteThemeButton.grid(row=2, column=2)
+        
+    def searchGoogle(self):
+        searchCommand = SearchCommand(self.searchBar.get())
+        searchCommand.execute()
         
     def darkThere(self):
         self.themePublisher.notifySubscribers("black")
